@@ -5,8 +5,106 @@
     font-family: 'Arial', sans-serif;
 }
 
+/* Add at the top of the file */
+/* Update the color scheme and add modern variables */
+:root {
+    --bg-color: #f0f2f5;
+    --container-bg: white;
+    --text-color: #1a237e;
+    --card-back-color: #ffffff;
+    --card-border-color: #e3e6f0;
+    --stats-color: #5c6bc0;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1f35;
+    --container-bg: #242b42;
+    --text-color: #fff;
+    --card-back-color: #2d364d;
+    --card-border-color: #3a4358;
+    --stats-color: #8c9eff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Update container styling */
+.container {
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Update button styling */
+button {
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Update card styling */
+.card {
+    transition: transform 0.5s, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--card-shadow);
+}
+
+.card-front, .card-back {
+    box-shadow: var(--card-shadow);
+    border: none;
+}
+
+.card-front {
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+}
+
+.card.matched .card-front {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* Update stats styling */
+.stats {
+    background-color: var(--card-back-color);
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+}
+
+/* Update modal styling */
+.modal-content {
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Update theme toggle */
+.theme-toggle {
+    background: var(--container-bg);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(45deg);
+}
+
 body {
-    background-color: #f8f9fa;
+    background-color: var(--bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,8 +116,24 @@ body {
     max-width: 800px;
     padding: 2rem;
     border-radius: 10px;
-    background-color: white;
+    background-color: var(--container-bg);  /* Change this line */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Update modal content background */
+.modal-content {
+    background-color: var(--container-bg);  /* Change this line */
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+/* Update modal heading color */
+.modal h2 {
+    color: var(--text-color);  /* Change this line */
+    margin-bottom: 1rem;
 }
 
 header {
@@ -30,7 +144,7 @@ header {
 }
 
 h1 {
-    color: #2c3e50;
+    color: var(--text-color);
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -41,7 +155,7 @@ h1 {
     width: 100%;
     margin-bottom: 1rem;
     font-size: 1.1rem;
-    color: #7f8c8d;
+    color: var(--stats-color);
 }
 
 .controls {
@@ -108,8 +222,8 @@ button:hover {
 }
 
 .card-back {
-    background-color: #ecf0f1;
-    border: 2px solid #bdc3c7;
+    background-color: var(--card-back-color);
+    border: 2px solid var(--card-border-color);
 }
 
 .card.flipped {
@@ -183,4 +297,17 @@ button:hover {
     .card-front i {
         font-size: 2rem;
     }
+}
+
+/* Add new styles for the theme toggle */
+.theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-color);
 }
