@@ -191,19 +191,20 @@ const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = themeToggle.querySelector('i');
 
 // Add after other event listeners
-// Theme toggle functionality
+// Update theme toggle functionality
 function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-    themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
 }
 
-// Check for saved theme preference
-const savedTheme = localStorage.getItem('theme') || 'light';
+// Initialize with dark theme
+document.documentElement.removeAttribute('data-theme'); // Remove any existing theme
+const savedTheme = localStorage.getItem('theme') || 'dark';
 setTheme(savedTheme);
 
 themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
 });
